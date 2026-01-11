@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Nuestra Historia</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- Corazones flotando -->
+<div class="heart" style="left:5%; width:15px; height:15px;"></div>
+<div class="heart" style="left:15%; width:25px; height:25px;"></div>
+<div class="heart" style="left:25%; width:18px; height:18px;"></div>
+<div class="heart" style="left:35%; width:22px; height:22px;"></div>
+<div class="heart" style="left:45%; width:16px; height:16px;"></div>
+<div class="heart" style="left:55%; width:20px; height:20px;"></div>
+<div class="heart" style="left:65%; width:24px; height:24px;"></div>
+<div class="heart" style="left:75%; width:18px; height:18px;"></div>
+<div class="heart" style="left:85%; width:20px; height:20px;"></div>
+<div class="heart" style="left:95%; width:15px; height:15px;"></div>
+
+<header>
+    <h1>Nuestra Historia</h1>
+    <p>♥️Un año juntos — 12 de enero✨</p>
+</header>
+
+<!-- Contador de días juntos -->
+<div id="contador">
+    <span id="dias">0</span> días juntos
+</div>
+
+<!-- Contenedor de cartas -->
+<div class="slider">
+    <section class="card">Cómo empezó todo
+        <p>
+            ¿Te acordás cuando te escribí y te pregunté si nos podíamos ver en tu universidad?
+            Yo quería preguntar sobre la carrera de Ingeniería de Sistemas,
+            la misma que vos ya estabas estudiando en tu universidad…
+            pero en el fondo también quería conocerte al fin.
+        </p>
+        <p>
+            Nunca imaginé que ese mensaje tan simple
+            sería el inicio de algo tan importante para mí.
+        </p>
+    </section>
+
+    <section class="card">Nuestra primera salida
+        <p>
+            Ese día fue especial.
+            Estaba nerviosa, pero también feliz.
+            Fue la primera vez que compartimos tiempo juntos
+            y sin darme cuenta, empecé a sentir algo muy lindo por vos.
+        </p>
+    </section>
+
+    <section class="card">La segunda salida
+        <p>
+            Nunca voy a olvidar cuando me pediste que formemos algo lindo.
+        </p>
+        <p>
+            Me pediste nuestro primer beso…
+            yo estaba muy nerviosa,
+            pero te lo di.
+            Y desde ese momento, algo cambió para siempre.
+        </p>
+    </section>
+
+    <section class="card">El tiempo y las dificultades
+        <p>
+            Pasaron los meses.
+            Algunas cosas se complicaron,
+            no siempre fue fácil
+            y no nos vemos tan seguido como quisiéramos.
+        </p>
+        <p>
+            Pero a pesar de todo,
+            seguimos acá.
+            Juntos.
+        </p>
+    </section>
+
+    <section class="card">Lo que siento hoy
+        <p>
+            Hoy, después de un año, quiero que sepas algo muy importante.
+        </p>
+        <p>
+            Te quiero mucho.
+            En realidad, te amo.
+        </p>
+        <p>
+            Estoy muy acostumbrada a vos,
+            a tu presencia,
+            a lo que sos.
+            Sos un buen hombre
+            y estar con vos hace que mi vida sea mejor.
+        </p>
+        <p>
+            Cuando estoy con vos,
+            me olvido de todo
+            y simplemente me siento bien.
+        </p>
+    </section>
+
+    <section class="card">Nuestro primer año juntos 
+        <p>
+            Gracias por este primer año juntos.  
+            Gracias por quedarte, por elegirme y por seguir conmigo.
+        </p>
+    </section>
+</div>
+
+<footer>
+    <p>
+        Gracias por ser mi lugar seguro <br>
+        ♥️ Con todo mi amor de <strong>Adriana</strong> para <strong>Ismael</strong> ✨
+    </p>
+</footer>
+
+<script>
+    // Contador de días juntos
+    const inicioRelacion = new Date(2025,0,12);
+    const diasElemento = document.getElementById('dias');
+    function actualizarContador() {
+        const hoy = new Date();
+        const diff = hoy - inicioRelacion;
+        const dias = Math.floor(diff / (1000*60*60*24));
+        diasElemento.textContent = dias;
+    }
+    actualizarContador();
+    setInterval(actualizarContador, 1000*60*60);
+
+    // Slider interactivo de cartas
+    const cartas = document.querySelectorAll('.card');
+    let index = 0;
+
+    function mostrarCarta(i){
+        cartas.forEach((carta, idx) => {
+            carta.style.display = (idx === i) ? 'block' : 'none';
+        });
+    }
+
+    mostrarCarta(index);
+
+    // Detectar click/tap para avanzar o retroceder
+    document.body.addEventListener('click', e => {
+        const x = e.clientX; // posición horizontal del click
+        const width = window.innerWidth;
+        if(x > width/2){ // click en la mitad derecha → siguiente
+            if(index < cartas.length-1){
+                index++;
+                mostrarCarta(index);
+            }
+        } else { // click en mitad izquierda → anterior
+            if(index > 0){
+                index--;
+                mostrarCarta(index);
+            }
+        }
+    });
+</script>
+
+</body>
+</html>
